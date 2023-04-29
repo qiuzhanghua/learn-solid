@@ -1,5 +1,5 @@
 import Counter from "../components/Counter";
-import { createSignal, Index } from "solid-js";
+import { createSignal, Index, Match, Switch } from "solid-js";
 
 export default function Home () {
   const [cats, setCats] = createSignal([
@@ -8,9 +8,13 @@ export default function Home () {
     { id: "OUtn3pvWmpg", name: "Henri The Existential Cat" }
   ]);
 
+  const [x] = createSignal(7);
+
   return (
     <>
       <Counter />
+      <p />
+      <p />
       <ul>
         <Index each={cats()}>
           {(cat, i) => (
@@ -25,6 +29,16 @@ export default function Home () {
           )}
         </Index>
       </ul>
+      <p />
+      <p />
+      <Switch fallback={<p>{x()} is between 5 and 10</p>}>
+        <Match when={x() > 10}>
+          <p>{x()} is greater than 10</p>
+        </Match>
+        <Match when={x() < 5}>
+          <p>{x()} is less than 5</p>
+        </Match>
+      </Switch>
     </>
   );
 }
