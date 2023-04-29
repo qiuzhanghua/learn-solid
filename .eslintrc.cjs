@@ -14,5 +14,6 @@ module.exports = {
     quotes: ["warn", "double"],
     semi: ["warn", "always"],
     "no-unused-vars": "warn",
+    "no-unreachable": "warn",
   }
 };

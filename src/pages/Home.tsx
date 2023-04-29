@@ -1,5 +1,17 @@
 import Counter from "../components/Counter";
-import { createSignal, Index, Match, Switch } from "solid-js";
+import {
+  createSignal,
+  ErrorBoundary,
+  Index,
+  Match,
+  ParentComponent,
+  Switch
+} from "solid-js";
+
+const Broken: ParentComponent = (props) => {
+  throw new Error("Oh No");
+  return <>Never Getting Here</>;
+};
 
 export default function Home () {
   const [cats, setCats] = createSignal([
@@ -39,6 +51,12 @@ export default function Home () {
           <p>{x()} is less than 5</p>
         </Match>
       </Switch>
+      <p />
+      <div>Before</div>
+      <ErrorBoundary fallback={(err) => err + "  !!"}>
+        <Broken />
+      </ErrorBoundary>
+      <div>After</div>
     </>
   );
 }
