@@ -9,10 +9,16 @@ export default function About () {
       <div class="m-3">
         Learn SolidJS<p>邱张华</p>
       </div>
-      <Show when={loggedIn()} fallback={<>
-        <button class="btn btn-primary" onClick={toggle}>
-          Login
-        </button></>}>
+      <Show
+        when={loggedIn()}
+        fallback={
+          <>
+            <button class="btn btn-primary" onClick={toggle}>
+              Login
+            </button>
+          </>
+        }
+      >
         <button class="btn btn-error" onClick={toggle}>
           Logout
         </button>

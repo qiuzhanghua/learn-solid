@@ -12,6 +12,7 @@ module.exports = {
   },
   rules: {
     quotes: ["warn", "double"],
-    semi: ["warn", "always"]
+    semi: ["warn", "always"],
+    "no-unused-vars": "warn",
   }
 };
