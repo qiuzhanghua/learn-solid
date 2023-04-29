@@ -1,4 +1,4 @@
-import { createEffect, createMemo, createSignal } from "solid-js";
+import { createEffect, createMemo, createSignal, onCleanup } from "solid-js";
 
 function fibonacci (num: number): number {
   if (num <= 1) return 1;
@@ -26,6 +26,10 @@ export default function Counter () {
     console.log("Calculating Fibonacci " + count());
     return fibonacci(count());
   });
+
+  // const timer = setInterval(() => setCount(count() + 1), 1000);
+  //
+  // onCleanup(() => clearInterval(timer));
 
   return (
     <>
