@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 const Home = lazy(() => import("./pages/Home"));
 const Bind = lazy(() => import("./pages/Bind"));
 const Photo = lazy(() => import("./pages/Photo"));
+const Properties = lazy(() => import("./pages/Properties"));
 const About = lazy(() => import("./pages/About"));
 
 export default function App () {
@@ -17,6 +18,7 @@ export default function App () {
         <Route path="/" component={Home} />
         <Route path="/bind" component={Bind} />
         <Route path="/photos" component={Photo} />
+        <Route path="/prop" component={Properties} />
         <Route path="/about" component={About} />
         <Route path="/*">
           <Navigate href="/" />
