@@ -1,6 +1,8 @@
 import { createSignal } from "solid-js";
 import "./Bind.css";
 export default function Bind () {
+  const [current, setCurrent] = createSignal("primary");
+
   const [pos, setPos] = createSignal({ x: 0, y: 0 });
 
   const [num, setNum] = createSignal(0);
@@ -27,6 +29,27 @@ export default function Bind () {
       >
         Some Text
       </div>
+      <button
+        class="btn"
+        classList={{ "btn-primary": current() === "primary" }}
+        onClick={() => setCurrent("btn-primary")}
+      >
+        Primary
+      </button>
+      <button
+        class="btn"
+        classList={{ "btn-secondary": current() === "secondary" }}
+        onClick={() => setCurrent("secondary")}
+      >
+        Secondary
+      </button>
+      <button
+        class="btn"
+        classList={{ "btn-error": current() === "error" }}
+        onClick={() => setCurrent("error")}
+      >
+        Error
+      </button>
     </>
   );
 }
