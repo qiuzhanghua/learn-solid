@@ -28,7 +28,9 @@ export default function () {
           {(item) => <div>{item}</div>}
         </For>
       </ColoredList>
-      <button class="btn" onClick={() => setColor("teal")}>Set Color to teal</button>
+      <button class="btn" onClick={() => setColor("teal")}>
+        Set Color to teal
+      </button>
     </>
   );
 }

@@ -8,7 +8,9 @@ import { ResolvedJSXElement } from "solid-js/types/reactive/signal";
 // 不对？
 
 export default function ColoredList (props) {
-  const c = children(() => props.children) as () => (ResolvedJSXElement)[];
-  createEffect(() => c().forEach((item: HTMLElement) => (item.style.color = props.color)));
+  const c = children(() => props.children) as () => ResolvedJSXElement[];
+  createEffect(() =>
+    c().forEach((item: HTMLElement) => (item.style.color = props.color))
+  );
   return <>{c()}</>;
 }
