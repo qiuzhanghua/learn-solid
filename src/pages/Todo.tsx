@@ -1,20 +1,23 @@
 import { createSignal, For, onMount } from "solid-js";
+import { createStore } from "solid-js/store";
 
 export default function () {
-  const [todos, setTodos] = createSignal([]);
+  const [todos, setTodos] = createStore([]);
   let input: HTMLInputElement | undefined;
   let todoId = 0;
 
   const addTodo = (text) => {
-    const [completed, setCompleted] = createSignal(false);
-    setTodos([...todos(), { id: ++todoId, text, completed, setCompleted }]);
+    setTodos([...todos, { id: ++todoId, text, completed: false }]);
   };
   const toggleTodo = (id) => {
-    const todo = todos().find((t) => t.id === id);
-    if (todo) todo.setCompleted(!todo.completed());
+    setTodos(
+      (todo) => todo.id === id,
+      "completed",
+      (completed) => !completed
+    );
   };
   const removeTodo = (id) => {
-    setTodos(todos().filter((t) => t.id !== id));
+    setTodos(todos.filter((t) => t.id !== id));
   };
 
   onMount(() => {
@@ -54,7 +57,7 @@ export default function () {
           Add Todo
         </button>
       </div>
-      <For each={todos()}>
+      <For each={todos}>
         {(todo) => {
           const { id, text } = todo;
           console.log(`Creating ${text}`);
@@ -62,17 +65,19 @@ export default function () {
             <div>
               <input
                 type="checkbox"
-                checked={todo.completed()}
+                checked={todo.completed}
                 onChange={[toggleTodo, id]}
               />
               <span
                 style={{
-                  "text-decoration": todo.completed() ? "line-through" : "none"
+                  "text-decoration": todo.completed ? "line-through" : "none"
                 }}
               >
                 {text}
               </span>
-              <button class="btn" onClick={[removeTodo, id]}>X</button>
+              <button class="btn" onClick={[removeTodo, id]}>
+                X
+              </button>
             </div>
           );
         }}

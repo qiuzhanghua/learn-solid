@@ -1,9 +1,13 @@
 import { Navigate, Route, Routes } from "@solidjs/router";
 import { lazy } from "solid-js";
 
-// import Home from "./pages/Home";
-// import About from "./pages/About";
 import Navbar from "./components/Navbar";
+// import Home from "./pages/Home";
+// import Bind from "./pages/Bind";
+// import Photo from "./pages/Photo";
+// import Properties from "./pages/Properties";
+// import Todo from "./pages/Todo";
+// import About from "./pages/About";
 const Home = lazy(() => import("./pages/Home"));
 const Bind = lazy(() => import("./pages/Bind"));
 const Photo = lazy(() => import("./pages/Photo"));
