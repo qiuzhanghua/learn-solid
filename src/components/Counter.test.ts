@@ -14,7 +14,8 @@ describe("<Counter />", () => {
 
   it("Click", async () => {
     render(Counter);
-    const btn = screen.getByRole("button");
+    const btn = screen.queryAllByRole("button")[0];
+    // screen.getByTestId("inc");
     const cs = btn.innerHTML;
     const c = parseInt(cs) || 0;
     fireEvent.click(btn);

@@ -25,7 +25,7 @@ export default function Photo () {
         <For each={photos()} fallback={<p>Loading...</p>}>
           {(photo) => (
             <figure>
-              <img src={photo.thumbnailUrl} alt={photo.title} />
+              <img src={photo.thumbnailUrl} alt={photo.title} elementtiming={photo.title} fetchpriority="auto" />
               <figcaption>{photo.title}</figcaption>
             </figure>
           )}
